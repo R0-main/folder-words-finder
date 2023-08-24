@@ -2,7 +2,7 @@ from finder import Finder;
 import os
 
 def want_to_exit(str):
-    return str == 'exit' or str == 'quit'
+    return str.lower() == 'exit' or str.lower() == 'quit'
 
 if __name__ == '__main__' : 
 
@@ -17,11 +17,11 @@ if __name__ == '__main__' :
         if want_to_exit(path) : quit()
 
         # Verification for user inputs
-        if not words : print('\nWords Can\'t Be Empty Value!')
-        if not path : print('\nPath Can\'t Be Empty Value!')
+        if not words : print('\nWords can\'t be empty value!')
+        if not path : print('\nPath can\'t be empty value!')
         if path and words :
             if not os.path.isdir(path) :
-                print('\nPath Does Not Exist!\n') 
+                print('\nPath does not exist!\n') 
                 continue
             break
 

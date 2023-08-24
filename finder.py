@@ -11,24 +11,24 @@ class Finder :
         self._path : str = path
 
         if not os.path.isdir(self._path) :
-            raise Exception('Path Does Not Exist!') 
+            raise Exception('Path does not exist!') 
 
-        print('\nFinder Inited')
+        print('\nFinder inited.')
         
     def start(self) :
-        print('Finder Started')
+        print('Finder started.')
         self.registerAllDirectoryFiles()
         self.readAllFiles()
 
         if not self.files :
-            return print(f'\nThe Path ({self._path}) Don\'t Contain Any File\n')
+            return print(f'\nThe path ({self._path}) don\'t contain any files.\n')
         if not self.spotted_lines :
-            return print(f'\nThe Research Don\'t Found Any Of Your Words In ({self._path})\n')
+            return print(f'\nThe research don\'t found any of your words in ({self._path}).\n')
 
     def readAllFiles (self) : 
-        print('\nStarting Reading All Registered Files ... \n')
+        print('\nStarting reading all found files ... \n')
         for entry in self.files : 
-            # Open a file: file
+
             try : 
                 opened_file = open(entry.path,mode='r')
                 
@@ -43,17 +43,17 @@ class Finder :
                             
                 opened_file.close()
             except :
-                 print(f'Failed To Open "{entry.path}".')
+                 print(f'failed to open "{entry.path}".')
 
     def registerAllDirectoryFiles (self, path = None) : 
-       print('\nStarting Registering All Files In The Target Folder ...\n')
+       print('\nstarting registering all files in the target folder ...\n')
        if path is None : 
            path = self._path
 
        with os.scandir(path) as entries:
            for entry in entries:
                 if entry.is_file():
-                    print(f'File found : {entry.name} ({entry.path})')
+                    print(f'File found : {entry.name} ({entry.path}).')
                     self.files.append(entry)
                 else : 
                     self.registerAllDirectoryFiles(entry)
